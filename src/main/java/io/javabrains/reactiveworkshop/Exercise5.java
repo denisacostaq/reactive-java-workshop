@@ -3,6 +3,7 @@ package io.javabrains.reactiveworkshop;
 import reactor.core.publisher.BaseSubscriber;
 
 import java.io.IOException;
+import java.util.function.Consumer;
 
 public class Exercise5 {
 
@@ -18,8 +19,7 @@ public class Exercise5 {
 
         System.out.println("Subscribe to a flux using an implementation of BaseSubscriber");
         ReactiveSources.userMono().subscribe(
-                new BaseSubscriber<User>() {
-                },
+                (User user) -> System.out.println(user.getFirstName()),
                 err -> System.err.println(err.getMessage()),
                 () -> System.out.println("Done"));
 
